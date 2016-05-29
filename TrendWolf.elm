@@ -1,8 +1,12 @@
+port module TrendWolf exposing (..)
+
+
 import Html exposing (..)
 import Html.App as Html
 import Html.Events exposing (onClick)
 import Html.Attributes exposing (..)
 import Http
+import String exposing (split, join)
 import Json.Decode as Json
 import Task
 
@@ -13,6 +17,7 @@ main =
     , update = update
     , subscriptions = subscriptions
     }
+
 
 -- MODEl
 
@@ -26,6 +31,7 @@ type alias Font =
     , file : String
     , subsets : String
     , cdn : String
+    , ranking : String
     }
 
 init =
@@ -39,6 +45,18 @@ type Msg
   | Success (List Font)
   | Error Http.Error
 
+
+port load : String -> Cmd msg
+
+getFamilies : List Font -> String
+getFamilies fonts =
+  let
+
+    families = List.map .family fonts
+  in
+    String.join (", ") families
+
+
 update : Msg -> Model -> (Model, Cmd Msg)
 update action model =
   case action of
@@ -47,38 +65,73 @@ update action model =
     Reset ->
       ( Model [] "trendWolf", Cmd.none )
     Success fonts ->
-      ( Model fonts model.category, Cmd.none )
+      ( Model fonts model.category, load ( getFamilies fonts ) )
     Error _ ->
       ( Model model.fonts "failed", Cmd.none )
 
 -- VIEW
 
-
+header =
+  div [ ]
+   [ h1 [ class "headline"] [ text "trendWolf" ]
+   , h2 [ class "sub-headline"] [text "Trending, Popular, and Most Recent Fonts From Google"]
+   ]
 
 homePage model =
-  h1 [ class "headline"] (text "trendWolf")
+  div [ class "landing" ]
+    [ div [ class "endpoints" ]
+      [ a [ onClick (GetFonts "trending"), href "#", class "button" ] [ text "Check Out Trending Fonts" ]
+      , a [ onClick (GetFonts "recent"),   href "#", class "button" ] [ text "Check Out Recent Fonts" ]
+      , div [ class "recent" ]
+        [ a [ onClick (GetFonts "popular"),  href "#", class "button" ] [ text "Check Out Popular Fonts"] ]
+      ]
+    ]
+
+leadFontPage model =
+  div [ class "lead" ]
+  [ h1 [ class "popular" ] [ text model.category ]
+    , a [ onClick (GetFonts "trending"),  href "#" ] [ text "Trending"]
+    , a [ onClick (GetFonts "recent"), href "#" ] [ text "Recent"]
+    , a [ onClick (GetFonts "popular"), href "#"] [ text "Popular"]
+    , a [ onClick Reset, href "#", class "home" ] [ text "Home"]
+  ]
+
+
+fonts model =
+  let
+    showFont font =
+      div [ class "font", style [ ( "font-family", font.family ) ] ]
+      [ h2 [ ] [ text font.family  ]
+      , p  [ ] [ text font.subsets ]
+      , div [ class "ranking" ]
+        [ h1 [ ] [ text font.ranking ] ]
+      , div [ class "actions" ]
+          [ a [ href font.file, class "button" ] [ text "Download!" ] ]
+      , div [ class "inputs" ]
+          [ h5 [ ] [ text "CDN:" ]
+          , input [ value font.cdn ] [ ]
+          ]
+      ]
+  in
+    div [ class "all" ]
+        ( List.map showFont model.fonts )
+
 
 view : Model -> Html Msg
 view model =
-  let
-    showFont font =
-      li []
-        [ text ("Family" ++ font.family )
-        , text ("Subset" ++ font.subsets)
-        , text ("CDN" ++ font.cdn)
-        , text ("File" ++ font.file)
-        ]
-  in
-    div []
-      [ h2 [ ] [ text model.category ]
-      , a [ onClick Reset, href "#" ] [ text "Home"]
-      , a [ onClick (GetFonts "trending"), href "#" ] [ text "Check Out Trending Fonts"]
-      , a [ onClick (GetFonts "recent"),   href "#" ] [ text "Check Out Recent Fonts"]
-      , a [ onClick (GetFonts "popular"),  href "#"] [ text "Check Out Popular Fonts"]
-      , ul [] (List.map showFont model.fonts)
-      ]
+  if model.category == "trendWolf" then
+    div [ class "welcome-page" ]
+    [ header
+    , homePage model
+    ]
+  else
+    div [ ]
+    [ leadFontPage model
+    , fonts model
+    ]
 
--- SUBS
+
+--SUBS
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
@@ -96,11 +149,12 @@ requestFonts category =
 
 decodeFont : Json.Decoder Font
 decodeFont =
-      Json.object4 Font
+      Json.object5 Font
         ( Json.at ["table", "family"] Json.string )
         ( Json.at ["table", "file"] Json.string )
         ( Json.at ["table", "subsets"] Json.string )
         ( Json.at ["table", "cdn"] Json.string )
+        ( Json.at ["table", "ranking"] Json.string )
 
 decodeFonts : Json.Decoder (List Font)
 decodeFonts =

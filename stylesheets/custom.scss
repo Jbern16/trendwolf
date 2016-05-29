@@ -1,0 +1,155 @@
+/*# sourceMappingURL=custom.scss.map */
+
+@import "bourbon/bourbon";
+@import "neat/neat";
+
+
+.lead {
+  margin-left: 20%;
+  margin-right: 20%;
+  text-align: center;
+  font-family: "Cutive Mono";
+  background-color: white;
+  margin-bottom: 1%;
+
+  h1 {
+   font-size: 48px;
+  }
+
+  a {
+    padding: 2%;
+    color: black;
+    text-decoration: none;
+
+  }
+
+  a:hover {
+    border-bottom: 1px solid red;
+  }
+
+  .home {
+    padding-left: 1%;
+  }
+
+}
+.all {
+  @include outer-container;
+  margin-left: 20%;
+  margin-right: 20%;
+
+  .font {
+    background-color: #fff;
+    text-align: center;
+    border: 5px solid red;
+    border-bottom: 20px solid red;
+    border-top: 20px solid red;
+    margin-bottom: 2%;
+    position: relative;
+
+    h1 {
+      font-size: 36px;
+      position: absolute;
+      left: 2%;
+      top: 0%;
+      text-decoration: underline;
+    }
+
+    h2 {
+      padding-left: 25%;
+      padding-right: 25%;
+      font-size: 36px;
+    }
+
+    p {
+      padding-left: 35%;
+      padding-right: 35%;
+    }
+  }
+
+  .actions {
+    margin-bottom: 5%;
+    margin-top: 5%;
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    a:hover{
+      background-color: blue;
+      color: white;
+    }
+  }
+
+  .inputs {
+    padding-bottom: 3%;
+  }
+}
+
+// landing page grid
+
+body {
+
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAAQUlEQVQYV2NkQAda/2cyXGNMRxdmRBGAKcKiGKEQXRKND1GIwzpkcUacimBughqC6kYMn0EFtP7PJE4hAwMD0QoBaeYcy77fIocAAAAASUVORK5CYII=") repeat;
+
+  .loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('images/hourglass.gif') 50% 50% no-repeat rgb(249,249,249);
+  }
+
+
+  .welcome-page {
+    font-family: "Cutive Mono";
+    @include outer-container;
+    background-color: #fff;
+    padding-bottom: 5%;
+    margin-left: 20%;
+    text-align: center;
+    margin-right: 20%;
+    margin-top: 2%;
+    border: 5px solid red;
+    border-top: 20px solid red;
+    border-bottom: 20px solid red;
+
+    .headline {
+      font-size: 60px;
+    }
+
+    .welcome-name {
+      padding-top: 5%
+    }
+
+    .endpoints {
+      padding-top: 10%;
+    }
+
+    .recent {
+      margin-top: 7%;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    a:hover{
+      background-color: blue;
+      color: white;
+    }
+  }
+
+
+  .button {
+    background-color: inherit;
+    padding: 1em;
+    margin-top: 5%;
+    border: 1px solid #000;
+    border-radius: 5px;
+  }
+
+}
