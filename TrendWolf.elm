@@ -143,7 +143,7 @@ requestFonts : String -> Cmd Msg
 requestFonts category =
   let
     url =
-      "http://trendwolf.herokuapp.com/api/v1/fonts" ++ category
+      "http://trendwolf.herokuapp.com/api/v1/fonts/" ++ category
   in
     Task.perform Error Success ( Http.get decodeFonts url)
 
