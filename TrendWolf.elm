@@ -73,16 +73,15 @@ update action model =
 header =
   div [ ]
    [ h1 [ class "headline"] [ text "trendWolf" ]
-   , h2 [ class "sub-headline"] [text "Trending, Popular,and Most Recent Fonts From Google"]
+   , h2 [ class "sub-headline"] [text "Trending, Recent, and Most Popular Fonts From Google"]
    ]
 
 homePage model =
   div [ class "landing" ]
     [ div [ class "endpoints" ]
-      [ a [ onClick (GetFonts "trending"), href "#", class "button" ] [ text "Check Out Trending Fonts" ]
-      , a [ onClick (GetFonts "recent"),   href "#", class "button" ] [ text "Check Out Recent Fonts" ]
-      , div [ class "recent" ]
-        [ a [ onClick (GetFonts "popular"),  href "#", class "button" ] [ text "Check Out Popular Fonts"] ]
+      [ a [ onClick (GetFonts "trending"), href "#", class "button hpb" ] [ text "Check Out Trending" ]
+      , a [ onClick (GetFonts "recent"),   href "#", class "button hpb" ] [ text "Check Out Recent" ]
+      , a [ onClick (GetFonts "popular"),  href "#", class "button hpb" ] [ text "Check Out Popular"]
       ]
     ]
 

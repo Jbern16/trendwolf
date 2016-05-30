@@ -128,7 +128,7 @@ var _user$project$TrendWolf$header = A2(
 				]),
 			_elm_lang$core$Native_List.fromArray(
 				[
-					_elm_lang$html$Html$text('Trending, Popular,and Most Recent Fonts From Google')
+					_elm_lang$html$Html$text('Trending, Recent, and Most Popular Fonts From Google')
 				]))
 		]));
 var _user$project$TrendWolf$getFamilies = function (fonts) {
@@ -270,11 +270,11 @@ var _user$project$TrendWolf$homePage = function (model) {
 								_elm_lang$html$Html_Events$onClick(
 								_user$project$TrendWolf$GetFonts('trending')),
 								_elm_lang$html$Html_Attributes$href('#'),
-								_elm_lang$html$Html_Attributes$class('button')
+								_elm_lang$html$Html_Attributes$class('button hpb')
 							]),
 						_elm_lang$core$Native_List.fromArray(
 							[
-								_elm_lang$html$Html$text('Check Out Trending Fonts')
+								_elm_lang$html$Html$text('Check Out Trending')
 							])),
 						A2(
 						_elm_lang$html$Html$a,
@@ -283,33 +283,24 @@ var _user$project$TrendWolf$homePage = function (model) {
 								_elm_lang$html$Html_Events$onClick(
 								_user$project$TrendWolf$GetFonts('recent')),
 								_elm_lang$html$Html_Attributes$href('#'),
-								_elm_lang$html$Html_Attributes$class('button')
+								_elm_lang$html$Html_Attributes$class('button hpb')
 							]),
 						_elm_lang$core$Native_List.fromArray(
 							[
-								_elm_lang$html$Html$text('Check Out Recent Fonts')
+								_elm_lang$html$Html$text('Check Out Recent')
 							])),
 						A2(
-						_elm_lang$html$Html$div,
+						_elm_lang$html$Html$a,
 						_elm_lang$core$Native_List.fromArray(
 							[
-								_elm_lang$html$Html_Attributes$class('recent')
+								_elm_lang$html$Html_Events$onClick(
+								_user$project$TrendWolf$GetFonts('popular')),
+								_elm_lang$html$Html_Attributes$href('#'),
+								_elm_lang$html$Html_Attributes$class('button hpb')
 							]),
 						_elm_lang$core$Native_List.fromArray(
 							[
-								A2(
-								_elm_lang$html$Html$a,
-								_elm_lang$core$Native_List.fromArray(
-									[
-										_elm_lang$html$Html_Events$onClick(
-										_user$project$TrendWolf$GetFonts('popular')),
-										_elm_lang$html$Html_Attributes$href('#'),
-										_elm_lang$html$Html_Attributes$class('button')
-									]),
-								_elm_lang$core$Native_List.fromArray(
-									[
-										_elm_lang$html$Html$text('Check Out Popular Fonts')
-									]))
+								_elm_lang$html$Html$text('Check Out Popular')
 							]))
 					]))
 			]));

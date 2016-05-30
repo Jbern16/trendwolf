@@ -6,8 +6,8 @@ html {
   box-sizing: inherit; }
 
 .lead {
-  margin-left: 20%;
-  margin-right: 20%;
+  width: 75%;
+  margin: auto;
   text-align: center;
   font-family: "Cutive Mono";
   background-color: white;
@@ -27,8 +27,8 @@ html {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  margin-left: 20%;
-  margin-right: 20%; }
+  width: 55%;
+  margin: auto; }
   .all::after {
     clear: both;
     content: "";
@@ -68,24 +68,16 @@ html {
 
 body {
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAAQUlEQVQYV2NkQAda/2cyXGNMRxdmRBGAKcKiGKEQXRKND1GIwzpkcUacimBughqC6kYMn0EFtP7PJE4hAwMD0QoBaeYcy77fIocAAAAASUVORK5CYII=") repeat; }
-  body .loader {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background: url("images/hourglass.gif") 50% 50% no-repeat #f9f9f9; }
   body .welcome-page {
     font-family: "Cutive Mono";
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     background-color: #fff;
+    width: 70%;
+    margin: auto;
     padding-bottom: 5%;
-    margin-left: 20%;
     text-align: center;
-    margin-right: 20%;
     margin-top: 2%;
     border: 5px solid red;
     border-top: 20px solid red;
@@ -99,9 +91,11 @@ body {
     body .welcome-page .welcome-name {
       padding-top: 5%; }
     body .welcome-page .endpoints {
-      padding-top: 10%; }
-    body .welcome-page .recent {
-      margin-top: 7%; }
+      display: inline-flex;
+      padding-top: 5%; }
+      body .welcome-page .endpoints .hpb {
+        margin-left: 3%;
+        margin-right: 3%; }
     body .welcome-page a {
       text-decoration: none;
       color: black; }
