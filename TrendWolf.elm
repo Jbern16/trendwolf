@@ -74,7 +74,7 @@ update action model =
 header =
   div [ ]
    [ h1 [ class "headline"] [ text "trendWolf" ]
-   , h2 [ class "sub-headline"] [text "Trending, Popular, and Most Recent Fonts From Google"]
+   , h2 [ class "sub-headline"] [text "Trending, Popular,and Most Recent Fonts From Google"]
    ]
 
 homePage model =
@@ -143,7 +143,7 @@ requestFonts : String -> Cmd Msg
 requestFonts category =
   let
     url =
-      "http://localhost:3000/api/v1/fonts/" ++ category
+      "http://trendwolf.herokuapp.com/api/v1/fonts" ++ category
   in
     Task.perform Error Success ( Http.get decodeFonts url)
 

@@ -8156,7 +8156,7 @@ var _user$project$TrendWolf$header = A2(
 				]),
 			_elm_lang$core$Native_List.fromArray(
 				[
-					_elm_lang$html$Html$text('Trending, Popular, and Most Recent Fonts From Google')
+					_elm_lang$html$Html$text('Trending, Popular,and Most Recent Fonts From Google')
 				]))
 		]));
 var _user$project$TrendWolf$getFamilies = function (fonts) {
@@ -8226,7 +8226,7 @@ var _user$project$TrendWolf$Success = function (a) {
 	return {ctor: 'Success', _0: a};
 };
 var _user$project$TrendWolf$requestFonts = function (category) {
-	var url = A2(_elm_lang$core$Basics_ops['++'], 'http://localhost:3000/api/v1/fonts/', category);
+	var url = A2(_elm_lang$core$Basics_ops['++'], 'http://trendwolf.herokuapp.com/api/v1/fonts', category);
 	return A3(
 		_elm_lang$core$Task$perform,
 		_user$project$TrendWolf$Error,
