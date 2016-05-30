@@ -51,7 +51,6 @@ port load : String -> Cmd msg
 getFamilies : List Font -> String
 getFamilies fonts =
   let
-
     families = List.map .family fonts
   in
     String.join (", ") families
@@ -67,7 +66,7 @@ update action model =
     Success fonts ->
       ( Model fonts model.category, load ( getFamilies fonts ) )
     Error _ ->
-      ( Model model.fonts "failed", Cmd.none )
+      ( Model model.fonts "Fonts Not Available", Cmd.none )
 
 -- VIEW
 
@@ -143,7 +142,7 @@ requestFonts : String -> Cmd Msg
 requestFonts category =
   let
     url =
-      "http://trendwolf.herokuapp.com/api/v1/fonts/" ++ category
+      "http://192.34.56.14/api/v1/fonts/" ++ category
   in
     Task.perform Error Success ( Http.get decodeFonts url)
 

@@ -198,7 +198,7 @@ var _user$project$TrendWolf$Success = function (a) {
 	return {ctor: 'Success', _0: a};
 };
 var _user$project$TrendWolf$requestFonts = function (category) {
-	var url = A2(_elm_lang$core$Basics_ops['++'], 'http://trendwolf.herokuapp.com/api/v1/fonts/', category);
+	var url = A2(_elm_lang$core$Basics_ops['++'], 'http://192.34.56.14/api/v1/fonts/', category);
 	return A3(
 		_elm_lang$core$Task$perform,
 		_user$project$TrendWolf$Error,
@@ -237,7 +237,7 @@ var _user$project$TrendWolf$update = F2(
 			default:
 				return {
 					ctor: '_Tuple2',
-					_0: A2(_user$project$TrendWolf$Model, model.fonts, 'failed'),
+					_0: A2(_user$project$TrendWolf$Model, model.fonts, 'Fonts Not Available'),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 		}
